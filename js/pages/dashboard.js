@@ -111,47 +111,52 @@ const DashboardPage = {
   },
 
   createCharts() {
-    const timeLabels = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'];
+    try {
+      if (typeof Chart === 'undefined') return;
+      const timeLabels = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00'];
 
-    // 1. Network Traffic Dual Line Chart
-    Charts.createLine('netTrafficChart', timeLabels, [
-      {
-        label: 'Upload',
-        data: [100, 140, 110, 150, 120, 160, 130],
-        borderColor: '#3B82F6',
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-        fill: true,
-        tension: 0.4
-      },
-      {
-        label: 'Download',
-        data: [40, 50, 45, 65, 55, 75, 50],
-        borderColor: '#10B981',
-        backgroundColor: 'rgba(16, 185, 129, 0.05)',
-        fill: true,
-        tension: 0.4
-      }
-    ]);
+      // 1. Network Traffic Dual Line Chart
+      Charts.createLine('netTrafficChart', timeLabels, [
+        {
+          label: 'Upload',
+          data: [100, 140, 110, 150, 120, 160, 130],
+          borderColor: '#3B82F6',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          fill: true,
+          tension: 0.4
+        },
+        {
+          label: 'Download',
+          data: [40, 50, 45, 65, 55, 75, 50],
+          borderColor: '#10B981',
+          backgroundColor: 'rgba(16, 185, 129, 0.05)',
+          fill: true,
+          tension: 0.4
+        }
+      ]);
 
-    // 2. CPU Load Over Time Dual Line Chart
-    Charts.createLine('cpuLoadChart', timeLabels, [
-      {
-        label: 'Percent',
-        data: [35, 45, 40, 60, 50, 75, 55],
-        borderColor: '#3B82F6',
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-        fill: true,
-        tension: 0.4
-      },
-      {
-        label: 'Percent',
-        data: [50, 55, 50, 65, 60, 85, 70],
-        borderColor: '#9CA3AF',
-        backgroundColor: 'transparent',
-        fill: false,
-        tension: 0.4
-      }
-    ]);
+      // 2. CPU Load Over Time Dual Line Chart
+      Charts.createLine('cpuLoadChart', timeLabels, [
+        {
+          label: 'Percent',
+          data: [35, 45, 40, 60, 50, 75, 55],
+          borderColor: '#3B82F6',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          fill: true,
+          tension: 0.4
+        },
+        {
+          label: 'Percent',
+          data: [50, 55, 50, 65, 60, 85, 70],
+          borderColor: '#9CA3AF',
+          backgroundColor: 'transparent',
+          fill: false,
+          tension: 0.4
+        }
+      ]);
+    } catch (err) {
+      console.warn('Dashboard chart creation deferred:', err);
+    }
   },
 
   init() {

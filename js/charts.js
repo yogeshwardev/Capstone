@@ -1,3 +1,7 @@
+/* ============================================================
+   LabX — Charts Wrapper (Fail-Safe & CDN Protected)
+   ============================================================ */
+
 const Charts = {
   instances: {},
 
@@ -31,69 +35,90 @@ const Charts = {
   },
 
   createLine(canvasId, labels, datasets, customOptions = {}) {
+    if (typeof Chart === 'undefined') return null;
     this.destroy(canvasId);
     const ctx = document.getElementById(canvasId);
     if (!ctx) return null;
-    datasets.forEach(ds => {
-      ds.tension = ds.tension || 0.4;
-      ds.borderWidth = ds.borderWidth || 2;
-      ds.pointRadius = ds.pointRadius || 0;
-      ds.pointHoverRadius = ds.pointHoverRadius || 4;
-    });
-    const options = this._mergeOptions(customOptions);
-    this.instances[canvasId] = new Chart(ctx, {
-      type: 'line', data: { labels, datasets }, options
-    });
-    return this.instances[canvasId];
+    try {
+      datasets.forEach(ds => {
+        ds.tension = ds.tension || 0.4;
+        ds.borderWidth = ds.borderWidth || 2;
+        ds.pointRadius = ds.pointRadius || 0;
+        ds.pointHoverRadius = ds.pointHoverRadius || 4;
+      });
+      const options = this._mergeOptions(customOptions);
+      this.instances[canvasId] = new Chart(ctx, {
+        type: 'line', data: { labels, datasets }, options
+      });
+      return this.instances[canvasId];
+    } catch (err) {
+      console.warn('Chart createLine warning:', err);
+      return null;
+    }
   },
 
   createBar(canvasId, labels, datasets, customOptions = {}) {
+    if (typeof Chart === 'undefined') return null;
     this.destroy(canvasId);
     const ctx = document.getElementById(canvasId);
     if (!ctx) return null;
-    datasets.forEach(ds => {
-      ds.borderRadius = ds.borderRadius || 6;
-      ds.borderSkipped = false;
-    });
-    const options = this._mergeOptions(customOptions);
-    this.instances[canvasId] = new Chart(ctx, {
-      type: 'bar', data: { labels, datasets }, options
-    });
-    return this.instances[canvasId];
+    try {
+      datasets.forEach(ds => {
+        ds.borderRadius = ds.borderRadius || 6;
+        ds.borderSkipped = false;
+      });
+      const options = this._mergeOptions(customOptions);
+      this.instances[canvasId] = new Chart(ctx, {
+        type: 'bar', data: { labels, datasets }, options
+      });
+      return this.instances[canvasId];
+    } catch (err) {
+      console.warn('Chart createBar warning:', err);
+      return null;
+    }
   },
 
   createDoughnut(canvasId, labels, data, colors) {
+    if (typeof Chart === 'undefined') return null;
     this.destroy(canvasId);
     const ctx = document.getElementById(canvasId);
     if (!ctx) return null;
-    this.instances[canvasId] = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels,
-        datasets: [{
-          data, backgroundColor: colors,
-          borderWidth: 0, cutout: '75%'
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 12 }, padding: 16, usePointStyle: true, pointStyle: 'circle' } },
-          tooltip: { ...this.defaultOptions.plugins.tooltip }
+    try {
+      this.instances[canvasId] = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels,
+          datasets: [{
+            data, backgroundColor: colors,
+            borderWidth: 0, cutout: '75%'
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { font: { family: 'Inter', size: 12 }, padding: 16, usePointStyle: true, pointStyle: 'circle' } },
+            tooltip: { ...this.defaultOptions.plugins.tooltip }
+          }
         }
-      }
-    });
-    return this.instances[canvasId];
+      });
+      return this.instances[canvasId];
+    } catch (err) {
+      console.warn('Chart createDoughnut warning:', err);
+      return null;
+    }
   },
 
   createArea(canvasId, labels, datasets, customOptions = {}) {
+    if (typeof Chart === 'undefined') return null;
     datasets.forEach(ds => { ds.fill = true; });
     return this.createLine(canvasId, labels, datasets, customOptions);
   },
 
   destroy(canvasId) {
     if (this.instances[canvasId]) {
-      this.instances[canvasId].destroy();
+      try {
+        this.instances[canvasId].destroy();
+      } catch (e) {}
       delete this.instances[canvasId];
     }
   },
@@ -103,9 +128,12 @@ const Charts = {
   },
 
   update(canvasId, newData) {
-    if (this.instances[canvasId]) {
-      this.instances[canvasId].data.datasets[0].data = newData;
-      this.instances[canvasId].update('none');
+    if (typeof Chart === 'undefined') return;
+    if (this.instances[canvasId] && this.instances[canvasId].data) {
+      try {
+        this.instances[canvasId].data.datasets[0].data = newData;
+        this.instances[canvasId].update('none');
+      } catch (e) {}
     }
   },
 
