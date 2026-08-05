@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  labx-dashboard:
+    build: .
+    container_name: labx_saas_app
+    ports:
+      - "80:8080"
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - API_ENDPOINT=https://api.labx-monitoring.io
+
+  influxdb-time-series:
+    image: influxdb:2.7-alpine
+    container_name: labx_metrics_db
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    restart: always
+
+volumes:
+  influxdb_data:

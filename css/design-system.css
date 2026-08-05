@@ -1,0 +1,56 @@
+/* ============================================================
+   LabX — Design System Tokens (Matching 2nd Reference Mockup)
+   ============================================================ */
+
+:root {
+  --primary: #1D4ED8;
+  --primary-bright: #2563EB;
+  --primary-bg: #EFF6FF;
+
+  --success: #10B981;
+  --success-bg: #D1FAE5;
+  --success-text: #065F46;
+
+  --warning: #F59E0B;
+  --warning-bg: #FEF3C7;
+  --warning-text: #92400E;
+
+  --critical: #EF4444;
+  --critical-bg: #FEE2E2;
+  --critical-text: #991B1B;
+
+  --bg-app: #F3F4F6;
+  --bg-card: #FFFFFF;
+  --bg-sidebar: #111827;
+  
+  --text-main: #111827;
+  --text-muted: #6B7280;
+  --text-tertiary: #9CA3AF;
+
+  --border: #E5E7EB;
+  --border-light: #F3F4F6;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,432 @@
+/* d:\Computer Arc\New folder\css\pages.css */
+
+/* Login specific */
+.login-page .login-logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page .login-brand {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.login-page .login-brand span {
+  color: var(--primary);
+}
+
+.login-remember {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+/* Dashboard specific */
+.dashboard-greeting {
+  margin-bottom: 24px;
+}
+
+.dashboard-greeting h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.dashboard-greeting p {
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.dashboard-health-banner {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-light);
+}
+
+.dashboard-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboard-section-title i, .dashboard-section-title svg {
+  width: 20px;
+  color: var(--text-tertiary);
+}
+
+/* Laboratories specific */
+.lab-detail-header {
+  margin-bottom: 24px;
+}
+
+/* Computer detail */
+.computer-detail {
+  animation: fadeIn 0.2s;
+}
+
+.computer-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.computer-detail-name {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.computer-detail-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.spec-item {
+  padding: 16px;
+  background-color: var(--bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+}
+
+.spec-item-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.spec-item-value {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 4px;
+  color: var(--text);
+}
+
+.process-table {
+  font-size: 13px;
+}
+
+/* Architecture page */
+.arch-diagram {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.arch-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.arch-node {
+  padding: 20px 24px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  text-align: center;
+  min-width: 160px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.arch-node:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.arch-node-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.arch-node-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.arch-node-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.arch-arrow {
+  font-size: 24px;
+  color: var(--text-tertiary);
+}
+
+.arch-node-client .arch-node-icon { background-color: var(--primary-bg); color: var(--primary); }
+.arch-node-server .arch-node-icon { background-color: var(--success-bg); color: var(--success); }
+.arch-node-database .arch-node-icon { background-color: var(--warning-bg); color: var(--warning); }
+.arch-node-dashboard .arch-node-icon { background-color: var(--critical-bg); color: var(--critical); }
+
+/* Performance page */
+.perf-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.perf-summary-card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  text-align: center;
+}
+
+.perf-summary-value {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--primary);
+}
+
+.perf-summary-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Alerts page */
+.alert-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.alert-summary-card {
+  padding: 16px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+/* Reports page */
+.report-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.report-type-card {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.report-type-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.report-type-card.selected {
+  border-color: var(--primary);
+  background-color: var(--primary-bg);
+}
+
+.report-type-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.report-type-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.report-type-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Settings page */
+.settings-section {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-light);
+}
+
+.settings-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.settings-row-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.toggle-switch {
+  width: 44px;
+  height: 24px;
+  background-color: #CBD5E1;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.toggle-switch.active {
+  background-color: var(--primary);
+}
+
+.toggle-switch::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: var(--transition);
+}
+
+.toggle-switch.active::after {
+  left: 22px;
+}
+
+.slider-input {
+  width: 200px;
+  accent-color: var(--primary);
+}
+
+/* Users page */
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+}
+
+.user-avatar-lg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary-bg);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+@media (max-width: 1200px) {
+  .perf-summary-cards { grid-template-columns: repeat(2, 1fr); }
+  .report-types { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .dashboard-health-banner {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .spec-grid { grid-template-columns: 1fr; }
+  .perf-summary-cards { grid-template-columns: 1fr; }
+  .alert-summary { grid-template-columns: 1fr; }
+  .report-types { grid-template-columns: 1fr; }
+  .settings-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
