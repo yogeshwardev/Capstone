@@ -1,25 +1,15 @@
 {
   "name": "labx-monitoring-platform",
   "version": "1.0.0",
-  "description": "LabX - Centralized Computer Resource Utilization & Performance Monitoring Platform (Startup SaaS Stack)",
+  "description": "LabX Centralized Computer Resource Utilization and Performance Monitoring Platform",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "serve": "npx http-server -p 8080 --cors"
+    "build": "node -e \"const fs=require('fs'); if(!fs.existsSync('public')) fs.mkdirSync('public'); ['index.html','agent.py','labx-installer.bat','install-agent.sh'].forEach(f => fs.existsSync(f) && fs.copyFileSync(f, 'public/'+f)); ['css','js'].forEach(d => fs.existsSync(d) && fs.cpSync(d, 'public/'+d, {recursive: true})); console.log('Static build ready in public/');\"",
+    "start": "node server.js"
   },
-  "keywords": [
-    "monitoring",
-    "telemetry",
-    "dashboard",
-    "computer-architecture",
-    "saas"
-  ],
-  "author": "LabX Startup Team",
-  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "socket.io": "^4.7.5"
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
   }
 }
