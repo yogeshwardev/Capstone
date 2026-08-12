@@ -2695,7 +2695,7 @@ while True:
       <div class="arch-node card flex flex-col flex-center text-center p-md" style="min-width:180px; border: 2px solid var(--primary);">
         <i data-lucide="laptop" style="color:var(--primary); width:40px; height:40px; margin-bottom:12px;"></i>
         <strong style="margin-bottom:8px;">Client Agent</strong>
-        <p class="text-xs text-secondary">Lightweight python daemon (`agent.py`) installed on each lab workstation.</p>
+        <p class="text-xs text-secondary">Lightweight python daemon (<code>agent.py</code>) installed on each lab workstation.</p>
       </div>
       <div class="arch-arrow text-secondary"><i data-lucide="arrow-right"></i></div>
       
