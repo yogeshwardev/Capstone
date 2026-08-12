@@ -71,12 +71,13 @@ const App = {
 
   renderLogin(pageModule) {
     const app = document.getElementById('app');
-    app.innerHTML = pageModule.render();
+    if (app) app.innerHTML = pageModule.render();
     if (pageModule.init) pageModule.init();
   },
 
   renderApp(pageModule, pageKey, param) {
     const app = document.getElementById('app');
+    if (!app) return;
     
     // Normalize active tab matching for aliases (labs/laboratories, assets/computers)
     const activeId = pageKey === 'laboratories' ? 'labs' : (pageKey === 'computers' ? 'assets' : pageKey);
@@ -242,8 +243,20 @@ const App = {
   }
 };
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => App.init());
+function bootApp() {
+  if (!window.appBooted) {
+    window.appBooted = true;
+    try {
+      App.init();
+    } catch (e) {
+      console.error('Boot error:', e);
+    }
+  }
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  bootApp();
 } else {
-  App.init();
+  document.addEventListener('DOMContentLoaded', bootApp);
+  window.addEventListener('load', bootApp);
 }
